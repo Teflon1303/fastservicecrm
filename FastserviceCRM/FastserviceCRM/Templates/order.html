@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.png'%}">
+    <title>Заказ</title>
+</head>
+<body class="body_white">
+
+<div class="header">
+        <div class="logo-index">
+            <img class="logo-index-img" src="{% static 'img/logo-hor-white.png'%}" alt="">
+        </div>
+        {% for WorkShop in WorkShop %}
+        <a class="link" href="{% url 'workShop' %}">
+        <div class="workShop">
+            <div class="titleWorkshop">
+                <div><p style="height: 20px; width: 20px; background-color: {{WorkShop.WorkShopColor}}; border-radius:50%;"></p></div>
+                <div class="name-workShop">{{WorkShop.workshopName}}</div>
+                <div>{{WorkShop.address}}</div>
+            </div>
+            <div class="workShop-info">
+
+<!--                <p>{{WorkShop.phone}}</p>-->
+<!--                <p>{{WorkShop.email}}</p>-->
+                <hr class="hr-workShop" >
+                <p>Колличество заказов: <strong>{{countOrders}}</strong> шт.</p>
+                <p>Сумма заказов: <strong>{{sumOrders}}</strong> руб.</p>
+                <p>Средний чек: <strong>{{averageCheck}} </strong> руб.</p>
+            </div>
+        </div>
+        </a>
+        {% endfor %}
+
+        {% if request.user.is_authenticated %}
+        <div class="user-name">
+            Привет,<br><strong>{{userName}}</strong><p>Вы являетесь администратором портала.</p>
+        </div>
+        <div class="button-logout">
+            <a href="{% url 'logout' %}"><button class="button_logout">Выйти</button></a>
+        </div>
+        {% if user == 'admin' %}
+            <a href="http://127.0.0.1:8000/admin/"><img class="button-admin-panel" width="50px" src="{% static 'img/ico-admin.png'%}"></a>
+        {% endif %}
+        {% endif %}
+</div>
+
+
+
+<div class="container">
+    <div class="order-info">
+        <div class="title-info-order">
+                ИНФОРМАЦИЯ О ЗАКАЗЕ
+        </div>
+{% for order in order %}
+<div class="id-status-order">
+    <div class="order-title">Заказ №{{order.id}}</div>
+    <div>
+        {% for colorStatus in colorStatus  %}
+        {% if order.status == colorStatus %}
+        <span class="status-oder" style="background:{{colorStatus.colorStatus}};">{{order.status}}</span><br>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="item-order">
+        <span class="ds-pole">Производитель:</span>
+        <select>
+            {% for typeOrder in typeOrder %}
+          <option>{{typeOrder.typeOrder}}</option>
+            {% endfor %}
+        </select>
+    </div>
+<div class="item-order">
+    <span class="ds-pole">Заказчик:</span>
+        {{order.customer}}
+        <select>
+            {% for сustomerOrder in сustomerOrder %}
+            {% if order.customer ==  сustomerOrder %}
+                <option selected>{{сustomerOrder.fio}}</option>
+            {% else %}
+                <option>{{сustomerOrder.fio}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+</div>
+<div class="item-order">
+    <span class="ds-pole">Комментарии к заказу:</span>
+    <textarea rows="4">{{order.comments}}</textarea>
+</div>
+        <div class="title-info-order">Устройство:</div>
+<div class="item-order">{{order.typeDevice}}</div>
+<div class="item-order"><span class="ds-pole">Производитель:</span><input value="{{order.brand}}"></div>
+<div class="item-order"><span class="ds-pole">Модель:</span><input value="{{order.modelDevice}}"></div>
+<div class="item-order"><span class="ds-pole">Цвет:</span><input value="{{order.color}}"></div>
+<div class="item-order"><span class="ds-pole">Комплектация:</span><input value="{{order.equipment}}"></div>
+<div class="item-order"><span class="ds-pole">Внешний вид:</span><input value="{{order.Appearance}}"></div>
+        <div class="title-info-order">Характеристики устройства:</div>
+<div class="item-order"><span class="ds-pole">Процессор:</span><input value="{{order.processor}}"></div>
+<div class="item-order"><span class="ds-pole">RAM:</span><input value="{{order.ram}}"></div>
+<div class="item-order"><span class="ds-pole">GPU:</span><input value="{{order.gpu}}"></div>
+<div class="item-order"><span class="ds-pole">Накопитель:</span><input value="{{order.storageDevice}}"></div>
+        <div class="title-info-order">Дополнительная информация:</div>
+<div class="item-order"><span class="ds-pole">Ориентировочная стоимость:</span>{{order.estimatedСost}}</div>
+<div class="item-order"><span class="ds-pole">Менеджер:</span>{{order.manager}}</div>
+<div class="item-order"><span class="ds-pole">Мастер:</span>{{order.master}}</div>
+<div class="item-order"><span class="ds-pole">Крайний срок:</span>{{order.deadline}}</div>
+<div class="item-order-urgently"><span class="ds-pole">Срочно:</span>
+
+    <div class="checkbox-wrapper-6">
+    <input class="tgl tgl-light" id="cb1-6" type="checkbox"/>
+    <label class="tgl-btn" for="cb1-6"></label>
+<!--        {{order.urgently}}-->
+
+    </div>
+    <div class="img-print"><a href="{% url 'printReport' order.id %}"><img class="img-print" src="{% static 'img/print.png' %}"></a></div>
+</div>
+{% endfor %}
+
+        </div>
+    <div class="order-akt">
+        <div class="info-work-material">
+            <div class="title-work-material">
+                РАБОТЫ И МАТЕРИАЛЫ
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

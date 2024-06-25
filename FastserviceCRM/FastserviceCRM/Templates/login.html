@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN CRM</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.png'%}">
+    <div class="container">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token  %}
+            <div class="form-login">
+            <img class="logo-form" src="{% static 'img/logo-ver-black.png'%}" alt="">
+            <div class="registration">
+                Авторизация
+            </div>
+            <input type="text" name="username" placeholder="Имя пользователя" autocomplete="username" maxlength="150" required="" id="id_login"><br><br>
+            <input type="password" name="password" placeholder="Пароль" autocomplete="current-password" required="" aria-describedby="id_password_helptext" id="id_password"><br><br>
+            <input type="checkbox">
+            <label>Запомнить меня</label><br>
+            <a href="test.html"><button class="button_enter" type="submit">Войти</button> </a>
+            <hr>
+            <p><a class="recovery_pass" href="#">Забыли пароль?</a></p>
+            </div>
+        </form>
+    </div>
+</head>
+<body>
+</body>
+</html>

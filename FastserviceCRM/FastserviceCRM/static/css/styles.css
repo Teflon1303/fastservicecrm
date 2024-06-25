@@ -1,0 +1,464 @@
+/* @font-face {
+    font-family: 'Montserrat', sans-serif;                                                
+    src: url("https://fonts.cdnfonts.com/css/montserrat");
+} */
+/* @font-face {
+    font-family: 'Merriweather' sans-serif;
+    src: url("../fonts/Merriweather-Black.ttf");
+} */
+
+*{
+    margin: 0;
+
+}
+
+body {
+    background-color: #91AA9D;
+    /* font-family: 'Montserrat', sans-serif;  */
+    font-family: 'Montserrat', sans-serif;
+    color: #6A6A6A;
+    font-family: 'Merriweather' sans-serif;
+}
+
+.body_white {
+    background-color: white;
+}
+
+.logo {
+ text-align: center;
+ margin-top: 40px;
+ margin: auto;
+ width: 240px;
+}
+
+.logo-index-img {
+    width: 300px;
+}
+
+.logo-index {
+    margin: 0 20px;
+}
+
+.logo-form {
+    width: 180px;
+    margin-bottom: 40px;
+    /* height: 520px; */
+    
+}
+
+.form-login {
+    width: 300px;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    /* margin-top: 100px; */
+    /* border-style: solid 1px; */
+	/* border: grey solid 1px; */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 20px 30px 0px rgba(0, 0, 0, 1);
+}
+
+.recovery_pass {
+    color: #2a8841;
+    text-decoration: none;
+}
+
+.registration {
+    padding: 0px 0 20px 0;
+    font-size: 24px;
+    
+}
+
+#id_login {
+    font-size: 14px;
+    padding: 10px;
+    border-style: none;
+    border-bottom: rgb(202, 202, 202) solid 1px;
+    outline:none;
+    width: 250px;
+    text-align: center;
+}
+
+#id_login:focus {
+    padding: 10px;
+    border-style: none;
+    border-bottom: #2E9C4A solid 1px;
+}
+
+#id_password {
+    font-size: 14px;
+    padding: 10px;
+    border-style: none;
+    border-bottom: rgb(172, 172, 172) solid 1px;
+    outline:none;
+    width: 250px;
+    text-align: center;
+}
+
+#id_password:focus {
+    border-bottom: #2E9C4A solid 1px;
+}
+
+.button_enter {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 8px 35px;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 15px;
+    color: white;
+    background: #4CB853;
+    box-shadow: 0 5px 0 #2E9C4A;
+    transition: .3s;
+    border-style: none;
+    width: 250px;
+    cursor: pointer;
+  }
+
+  .button-logout {
+    display: flex;
+    float: right;
+  }
+
+  .button_logout {
+    
+    display: inline-block;
+    border-radius: 5px;
+    padding: 8px 35px;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 15px;
+    color: white;
+    background: #4CB853;
+    box-shadow: 0 5px 0 #2E9C4A;
+    transition: .3s;
+    border-style: none;
+    width: auto;
+    cursor: pointer;
+    
+  }
+
+  .user-name {
+    margin-left: auto;
+    color: #fff;
+    
+  }
+
+  .button_enter:hover {
+    background: #48d151;
+    box-shadow: 0 5px 0 #2a8841;
+
+  }
+
+.container {
+    width: 980px;
+    height: 100%;
+    margin: auto;
+    padding: 15px;
+    margin-top: 100px;
+    vertical-align: middle;
+}
+
+.company {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    margin-left: 20px;
+}
+
+.workShop {
+    background-color: #e0e0e0;
+    padding: 20px;
+    margin-left: 20px;
+    width: 330px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.workShop:hover {
+    transform: scale(1.1);
+}
+
+.logo-company {
+    text-align: center;
+}
+
+.header {
+    background-color: #91AA9D;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 20px 10px;
+    /* justify-content: space-between; */
+}
+
+.button-admin-paenl {
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.button-admin-panel:hover {
+    transform: scale(1.2);
+}
+
+
+.link {
+    text-decoration: none;
+    color: #4b4b4b;
+    
+  }
+
+  .hr-workShop {
+    margin: 5px 0;
+  }
+
+
+  .titleWorkshop {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .name-workShop {
+    margin: 0 15px;
+    font-weight: 600;
+ 
+  }
+
+
+  table {
+    width: 99%;
+    border-collapse: collapse;
+    padding: 10px 5px;
+    margin: auto;
+    margin-top: 5px;
+    border: none;
+  }
+
+
+tr, th, td {
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.srvice-description {
+	font-size: 12px;
+	margin-top: 5px;
+}
+
+th {
+	background-color: #29a992;
+	color: white;
+	font-size: 14px;
+	text-align: left;
+}
+
+tr {
+    border-bottom: 1px solid #d3d3d3;
+    vertical-align: top;
+    font-size: 13px;
+}
+
+.status-oder {
+    margin-top: 5px;
+    padding: 5px 10px; 
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.id-table-order {
+    height: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 5px;
+    text-decoration: none;
+}
+
+.id-status-order {
+    display: flex;
+    margin: 20px 0;
+    justify-content: space-around
+
+}
+
+.order-title {
+    font-size: 20px;
+}
+
+/* .container {
+    display: flex;
+    gap: 5%;
+    width: 100%;
+    margin-top: 20px;
+} */
+
+.order-info {
+    width: 97.5%;
+    border: 1px solid #d3d3d3;
+}
+
+.order-akt {
+    width: 97.5%;
+}
+
+.title-info-order {
+    text-align: center;
+    background-color: #91AA9D;
+    padding: 10px 20px;
+    border-bottom: 5px solid #f8961d;
+    color: #fff;
+    font-weight: 600;
+    
+}
+
+.title-work-material {
+    text-align: center;
+    background-color: #91AA9D;
+    padding: 10px 20px;
+    border-bottom: 5px solid #259883;
+    color: #fff;
+    font-weight: 600;
+}
+
+.title-work-material {
+    text-align: center;
+    background-color: #91AA9D;
+    padding: 10px 20px;
+}
+
+.item-order {
+    padding: 5px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #d3d3d3;
+    display: flex;
+    align-items: first baseline;
+}
+
+.item-order-urgently {
+    padding: 5px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #d3d3d3;
+    display: flex;
+    align-items: center;
+}
+
+.ds-pole {
+    font-weight: 500;
+    padding-right: 20px;
+    margin-left: 10px;
+}
+
+input {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #d3d3d3;
+    padding: 5px;
+    color: #4b4b4b;
+    font-size: 18px;
+}
+
+select {
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #d3d3d3;
+    padding: 5px;
+    color: #4b4b4b;
+    font-size: 18px;
+}
+
+textarea {
+    width: 420px;
+    border-radius: 5px;
+    border: 1px solid #d3d3d3;
+    padding: 5px;
+    color: #4b4b4b;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Срочность */
+
+.checkbox-wrapper-6 .tgl {
+    display: none;
+  }
+  .checkbox-wrapper-6 .tgl,
+  .checkbox-wrapper-6 .tgl:after,
+  .checkbox-wrapper-6 .tgl:before,
+  .checkbox-wrapper-6 .tgl *,
+  .checkbox-wrapper-6 .tgl *:after,
+  .checkbox-wrapper-6 .tgl *:before,
+  .checkbox-wrapper-6 .tgl + .tgl-btn {
+    box-sizing: border-box;
+  }
+  .checkbox-wrapper-6 .tgl::-moz-selection,
+  .checkbox-wrapper-6 .tgl:after::-moz-selection,
+  .checkbox-wrapper-6 .tgl:before::-moz-selection,
+  .checkbox-wrapper-6 .tgl *::-moz-selection,
+  .checkbox-wrapper-6 .tgl *:after::-moz-selection,
+  .checkbox-wrapper-6 .tgl *:before::-moz-selection,
+  .checkbox-wrapper-6 .tgl + .tgl-btn::-moz-selection,
+  .checkbox-wrapper-6 .tgl::selection,
+  .checkbox-wrapper-6 .tgl:after::selection,
+  .checkbox-wrapper-6 .tgl:before::selection,
+  .checkbox-wrapper-6 .tgl *::selection,
+  .checkbox-wrapper-6 .tgl *:after::selection,
+  .checkbox-wrapper-6 .tgl *:before::selection,
+  .checkbox-wrapper-6 .tgl + .tgl-btn::selection {
+    background: none;
+  }
+  .checkbox-wrapper-6 .tgl + .tgl-btn {
+    outline: 0;
+    display: block;
+    width: 4em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+  .checkbox-wrapper-6 .tgl + .tgl-btn:after,
+  .checkbox-wrapper-6 .tgl + .tgl-btn:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+  }
+  .checkbox-wrapper-6 .tgl + .tgl-btn:after {
+    left: 0;
+  }
+  .checkbox-wrapper-6 .tgl + .tgl-btn:before {
+    display: none;
+  }
+  .checkbox-wrapper-6 .tgl:checked + .tgl-btn:after {
+    left: 50%;
+  }
+
+  .checkbox-wrapper-6 .tgl-light + .tgl-btn {
+    background: #ff7777;
+    border-radius: 2em;
+    padding: 2px;
+    transition: all 0.4s ease;
+  }
+  .checkbox-wrapper-6 .tgl-light + .tgl-btn:after {
+    border-radius: 50%;
+    background: #fff;
+    transition: all 0.2s ease;
+  }
+  .checkbox-wrapper-6 .tgl-light:checked + .tgl-btn {
+    background: #5faf74;
+  }
+  /* Конец срочности */
+
+
+  .img-print {
+    display: flex;
+    width: 36px;
+    margin-left: auto;
+  }

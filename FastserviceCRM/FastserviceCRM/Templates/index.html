@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.png'%}">
+    <title>FASTSERVICE CRM</title>
+</head>
+
+  <script>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+     ['Газ', 'Объём'],
+     ['Азот',     78.09],
+     ['Кислород', 20.95],
+     ['Аргон',    0.93],
+     ['Углекислый газ', 0.03]
+    ]);
+    var options = {
+     title: 'Состав воздуха',
+     is3D: true,
+     pieResidueSliceLabel: 'Остальное'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('air'));
+     chart.draw(data, options);
+   }
+  </script>
+
+
+
+<body class="body_white">
+<div class="header">
+        <div class="logo-index">
+            <img class="logo-index-img" src="{% static 'img/logo-hor-white.png'%}" alt="">
+        </div>
+        {% for WorkShop in WorkShop %}
+        <a class="link" href="{% url 'workShop' %}">
+        <div class="workShop">
+            <div class="titleWorkshop">
+                <div><p style="height: 20px; width: 20px; background-color: {{WorkShop.WorkShopColor}}; border-radius:50%;"></p></div>
+                <div class="name-workShop">{{WorkShop.workshopName}}</div>
+                <div>{{WorkShop.address}}</div>
+            </div>
+            <div class="workShop-info">
+                
+<!--                <p>{{WorkShop.phone}}</p>-->
+<!--                <p>{{WorkShop.email}}</p>-->
+                <hr class="hr-workShop" >
+                <p>Колличество заказов: <strong>{{countOrders}}</strong> шт.</p>
+                <p>Сумма заказов: <strong>{{sumOrders}}</strong> руб.</p>
+                <p>Средний чек: <strong>{{averageCheck}} </strong> руб.</p>
+            </div>
+        </div>
+        </a>
+        {% endfor %}
+
+        {% if request.user.is_authenticated %}
+        <div class="user-name">
+            Привет,<br><strong>{{userName}}</strong><p>Вы являетесь администратором портала.</p>
+        </div>
+        <div class="button-logout">
+            <a href="{% url 'logout' %}"><button class="button_logout">Выйти</button></a>
+        </div>
+        {% if user == 'admin' %}
+            <a href="http://127.0.0.1:8000/admin/"><img class="button-admin-panel" width="50px" src="{% static 'img/ico-admin.png'%}"></a>
+        {% endif %}
+        {% endif %}
+</div>
+
+<table>
+        <tr>
+          <th>№ заказа</th>
+            <th>Статус</th>
+          <th>Тип заказа</th>
+          <th>Устройство<br></th>
+          <th>Неисправность</th>
+          <th>Контрагент</th>
+          <th>Сумма</th>
+        </tr>
+    {% for Order in Orders1 %}
+        <tr>
+            <td><a class="id-table-order" href="{% url 'order' Order.id %}"><div class="id-table-order">Заказ №{{Order.id}}</div></a><br>{{Order.dateCreate}}</td>
+            <td>
+                {% for colorStatus in colorStatus  %}
+                    {% if Order.status == colorStatus %}
+                        <span class="status-oder" style="background:{{colorStatus.colorStatus}};">{{Order.status}}</span><br>
+                    {% endif %}
+                {% endfor %}
+            </td>
+          <td>Сервестный центр</td>
+          <td>{{Order.typeDevice}}<br>{{Order.modelDevice}}</td>
+          <td>{{Order.malfunction}}</td>
+          <td>{{Order.customer}}<br>Телефон<br>адрес</td>
+          <td><strong>{{Order.estimatedСost}} руб.</strong></td>
+        </tr>
+    {% endfor %}
+      </table>
+
+<br>
+<br>
+
+<table>
+        <tr>
+          <th>№ заказа</th>
+          <th>Статус</th>
+          <th>Тип заказа</th>
+          <th>Устройство<br></th>
+          <th>Неисправность</th>
+          <th>Контрагент</th>
+          <th>Сумма</th>
+        </tr>
+    {% for Order in Orders2 %}
+        <tr>
+          <td><a class="id-table-order" href="{% url 'order' Order.id %}"><div class="id-table-order">Заказ №{{Order.id}}</div></a><br>{{Order.dateCreate}}</td>
+            <td>
+                {% for colorStatus in colorStatus  %}
+                    {% if Order.status == colorStatus %}
+                        <span class="status-oder" style="background:{{colorStatus.colorStatus}};">{{Order.status}}</span><br>
+                    {% endif %}
+                {% endfor %}</td>
+          <td>Сервестный центр</td>
+          <td>{{Order.typeDevice}}<br>{{Order.modelDevice}}</td>
+          <td>{{Order.malfunction}}</td>
+          <td>{{Order.customer}}<br>Телефон<br>адрес</td>
+          <td><strong>{{Order.estimatedСost}} руб.</strong></td>
+        </tr>
+    {% endfor %}
+      </table>
+
+    <div class="company">
+        <h3>Ваша компания:</h3>
+        {% for company in company %}
+        <div class="logo-company">
+            <img width="200px" src="{{BASE_DIR}}/{{company.logo}}">
+        </div>
+        <h4>{{company.companyName}}</h4>
+        <p>{{company.unp}}</p>
+        <p>{{company.phone}}</p>
+        <p>{{company.address}}</p>
+        <a href="{{company.site}}">Перейти на сайт</a>
+        <p>{{company.email}}</p>
+        <p>{{company.currency}}</p>
+        <h3>Банковские ревизиты:</h3>
+        <p>{{company.bankName}}</p>
+        <p>{{company.bik}}</p>
+        <p>{{company.checkingAccount}}</p>
+        {% endfor %}
+    </div>
+
+
+
+
+
+<!--    {% for WorkShop in WorkShop %}-->
+<!--        <div class="company">-->
+<!--            <p style="height: 20px; width: 20px; background-color: {{WorkShop.color}}; border-radius: 50%;"><p>-->
+<!--            <h3>{{WorkShop.workshopName}}</h3>-->
+<!--            <p>{{WorkShop.address}}</p>-->
+<!--            <p>{{WorkShop.phone}}</p>-->
+<!--            <p>{{WorkShop.email}}</p>-->
+<!--        </div>-->
+<!--    {% endfor %}-->
+</body>
+</html>

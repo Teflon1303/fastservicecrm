@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.png'%}">
+    <title>Мастерская</title>
+
+</head>
+<body class="body_white">
+<div class="header">
+        <div class="logo-index">
+            <img class="logo-index-img" src="{% static 'img/logo-hor-white.png'%}" alt="">
+        </div>
+        {% for WorkShop in WorkShop %}
+        <a class="link" href="{% url 'workShop' %}">
+        <div class="workShop">
+            <div class="titleWorkshop">
+                <div><p style="height: 20px; width: 20px; background-color: {{WorkShop.color}}; border-radius:50%;"></p></div>
+                <div class="name-workShop">{{WorkShop.workshopName}}</div>
+                <div>{{WorkShop.address}}</div>
+            </div>
+            <div class="workShop-info">
+
+<!--                <p>{{WorkShop.phone}}</p>-->
+<!--                <p>{{WorkShop.email}}</p>-->
+                <hr class="hr-workShop" >
+                <p>Колличество заказов: <strong>{{countOrders}}</strong> шт.</p>
+                <p>Сумма заказов: <strong>{{sumOrders}}</strong> руб.</p>
+                <p>Средний чек: <strong>{{averageCheck}} </strong> руб.</p>
+            </div>
+        </div>
+        </a>
+        {% endfor %}
+
+        {% if request.user.is_authenticated %}
+        <div class="user-name">
+            Привет,<br><strong>{{userName}}</strong><p>Вы являетесь администратором портала.</p>
+        </div>
+        <div class="button-logout">
+            <a href="{% url 'logout' %}"><button class="button_logout">Выйти</button></a>
+        </div>
+        {% if user == 'admin' %}
+            <a href="http://127.0.0.1:8000/admin/"><img class="button-admin-panel" width="50px" src="{% static 'img/ico-admin.png'%}"></a>
+        {% endif %}
+        {% endif %}
+</div>
+</body>
+</html>
